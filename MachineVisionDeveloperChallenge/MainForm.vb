@@ -58,13 +58,42 @@
         End Try
     End Sub
 
+    Private Sub ToolStripMenuItemSave_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemSave.Click
+        SaveCollection()
+    End Sub
+
+    Private Sub ToolStripMenuItemLoad_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemLoad.Click
+        If MessageBox.Show("Are you sure you want to discard any changes and load last saved collection?", "Reload?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            _shapeCollection.Circles.Clear()
+            _shapeCollection.Ellipses.Clear()
+            _shapeCollection.Polygons.Clear()
+            _shapeCollection.Squares.Clear()
+            _shapeCollection.Triangles.Clear()
+            ComboBoxShape.SelectedItem = Nothing
+            ComboBoxIndex.SelectedItem = Nothing
+            LoadSavedCollection()
+            If _shapeCollection IsNot Nothing Then CalculateAll()
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItemReset_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemReset.Click
+        If MessageBox.Show("Are you sure you want to discard any changes and reload the startup collection?", "Reset?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            _shapeCollection.Circles.Clear()
+            _shapeCollection.Ellipses.Clear()
+            _shapeCollection.Polygons.Clear()
+            _shapeCollection.Squares.Clear()
+            _shapeCollection.Triangles.Clear()
+            ComboBoxShape.SelectedItem = Nothing
+            ComboBoxIndex.SelectedItem = Nothing
+            ParseStartupCSV()
+            If _shapeCollection IsNot Nothing Then CalculateAll()
+        End If
+    End Sub
+
     Private Sub ToolStripMenuItemExit_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemExit.Click
         Me.Close()
     End Sub
 
-    Private Sub ToolStripMenuItemSave_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItemSave.Click
-        SaveCollection()
-    End Sub
 
     Private Sub PanelShapePaint(ByVal sender As Object, ByVal e As PaintEventArgs) Handles PanelShape.Paint
         Try

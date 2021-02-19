@@ -37,7 +37,9 @@ Partial Class MainForm
         Me.PanelShape = New System.Windows.Forms.Panel()
         Me.MenuStripMain = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItemFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemLoad = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemSave = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemReset = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanelMain.SuspendLayout()
         Me.TableLayoutPanelSelection.SuspendLayout()
@@ -244,21 +246,33 @@ Partial Class MainForm
         '
         'ToolStripMenuItemFile
         '
-        Me.ToolStripMenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemSave, Me.ToolStripMenuItemExit})
+        Me.ToolStripMenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemLoad, Me.ToolStripMenuItemSave, Me.ToolStripMenuItemReset, Me.ToolStripMenuItemExit})
         Me.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile"
         Me.ToolStripMenuItemFile.Size = New System.Drawing.Size(37, 20)
         Me.ToolStripMenuItemFile.Text = "File"
         '
+        'ToolStripMenuItemLoad
+        '
+        Me.ToolStripMenuItemLoad.Name = "ToolStripMenuItemLoad"
+        Me.ToolStripMenuItemLoad.Size = New System.Drawing.Size(159, 22)
+        Me.ToolStripMenuItemLoad.Text = "Load Shapes"
+        '
         'ToolStripMenuItemSave
         '
         Me.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave"
-        Me.ToolStripMenuItemSave.Size = New System.Drawing.Size(138, 22)
+        Me.ToolStripMenuItemSave.Size = New System.Drawing.Size(159, 22)
         Me.ToolStripMenuItemSave.Text = "Save Shapes"
+        '
+        'ToolStripMenuItemReset
+        '
+        Me.ToolStripMenuItemReset.Name = "ToolStripMenuItemReset"
+        Me.ToolStripMenuItemReset.Size = New System.Drawing.Size(159, 22)
+        Me.ToolStripMenuItemReset.Text = "Reset Collection"
         '
         'ToolStripMenuItemExit
         '
         Me.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit"
-        Me.ToolStripMenuItemExit.Size = New System.Drawing.Size(138, 22)
+        Me.ToolStripMenuItemExit.Size = New System.Drawing.Size(159, 22)
         Me.ToolStripMenuItemExit.Text = "Exit"
         '
         'MainForm
@@ -299,4 +313,6 @@ Partial Class MainForm
     Friend WithEvents TextBoxCurrentShape As TextBox
     Friend WithEvents ButtonModifyShape As Button
     Friend WithEvents ButtonAddShape As Button
+    Friend WithEvents ToolStripMenuItemLoad As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItemReset As ToolStripMenuItem
 End Class
