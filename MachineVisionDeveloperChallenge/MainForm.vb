@@ -112,15 +112,45 @@
                         End If
                     End Using
                 Case "Ellipses"
-
+                    Using modifyForm As New EllipseForm()
+                        If modifyForm.ShowDialog = DialogResult.OK Then
+                            _shapeCollection.Ellipses.Add(modifyForm.returnEllipse)
+                            updated = True
+                            Dim i = _shapeCollection.Ellipses.Count - 1
+                            ComboBoxIndex.Items.Add($"Ellipse {i}")
+                            ComboBoxIndex.SelectedIndex = i
+                        End If
+                    End Using
                 Case "Polygons"
-
+                    Using modifyForm As New PolygonForm()
+                        If modifyForm.ShowDialog = DialogResult.OK Then
+                            _shapeCollection.Polygons.Add(modifyForm.returnpolygon)
+                            updated = True
+                            Dim i = _shapeCollection.Polygons.Count - 1
+                            ComboBoxIndex.Items.Add($"Polygon {i}")
+                            ComboBoxIndex.SelectedIndex = i
+                        End If
+                    End Using
                 Case "Squares"
-
+                    Using modifyForm As New SquareForm()
+                        If modifyForm.ShowDialog = DialogResult.OK Then
+                            _shapeCollection.Squares.Add(modifyForm.returnSquare)
+                            updated = True
+                            Dim i = _shapeCollection.Squares.Count - 1
+                            ComboBoxIndex.Items.Add($"Square {i}")
+                            ComboBoxIndex.SelectedIndex = i
+                        End If
+                    End Using
                 Case "Equilateral Triangles"
-
-                Case Else
-
+                    Using modifyForm As New TriangleForm()
+                        If modifyForm.ShowDialog = DialogResult.OK Then
+                            _shapeCollection.Triangles.Add(modifyForm.returnTriangle)
+                            updated = True
+                            Dim i = _shapeCollection.Triangles.Count - 1
+                            ComboBoxIndex.Items.Add($"Equilateral Triangle {i}")
+                            ComboBoxIndex.SelectedIndex = i
+                        End If
+                    End Using
             End Select
             If updated Then CalculateAll()
         Catch ex As Exception
@@ -141,15 +171,37 @@
                         MessageBox.Show("Selected shape index outside of collection limits.")
                     End If
                 Case "Ellipses"
-
+                    If ComboBoxIndex.SelectedIndex >= 0 AndAlso ComboBoxIndex.SelectedIndex < _shapeCollection.Ellipses.Count Then
+                        Using modifyForm As New EllipseForm(_shapeCollection.Ellipses(ComboBoxIndex.SelectedIndex))
+                            If modifyForm.ShowDialog = DialogResult.OK Then _shapeCollection.Ellipses(ComboBoxIndex.SelectedIndex) = modifyForm.returnEllipse : updated = True
+                        End Using
+                    Else
+                        MessageBox.Show("Selected shape index outside of collection limits.")
+                    End If
                 Case "Polygons"
-
+                    If ComboBoxIndex.SelectedIndex >= 0 AndAlso ComboBoxIndex.SelectedIndex < _shapeCollection.Polygons.Count Then
+                        Using modifyForm As New PolygonForm(_shapeCollection.Polygons(ComboBoxIndex.SelectedIndex))
+                            If modifyForm.ShowDialog = DialogResult.OK Then _shapeCollection.Polygons(ComboBoxIndex.SelectedIndex) = modifyForm.returnPolygon : updated = True
+                        End Using
+                    Else
+                        MessageBox.Show("Selected shape index outside of collection limits.")
+                    End If
                 Case "Squares"
-
+                    If ComboBoxIndex.SelectedIndex >= 0 AndAlso ComboBoxIndex.SelectedIndex < _shapeCollection.Squares.Count Then
+                        Using modifyForm As New SquareForm(_shapeCollection.Squares(ComboBoxIndex.SelectedIndex))
+                            If modifyForm.ShowDialog = DialogResult.OK Then _shapeCollection.Squares(ComboBoxIndex.SelectedIndex) = modifyForm.returnSquare : updated = True
+                        End Using
+                    Else
+                        MessageBox.Show("Selected shape index outside of collection limits.")
+                    End If
                 Case "Equilateral Triangles"
-
-                Case Else
-
+                    If ComboBoxIndex.SelectedIndex >= 0 AndAlso ComboBoxIndex.SelectedIndex < _shapeCollection.Triangles.Count Then
+                        Using modifyForm As New TriangleForm(_shapeCollection.Triangles(ComboBoxIndex.SelectedIndex))
+                            If modifyForm.ShowDialog = DialogResult.OK Then _shapeCollection.Triangles(ComboBoxIndex.SelectedIndex) = modifyForm.returnTriangle : updated = True
+                        End Using
+                    Else
+                        MessageBox.Show("Selected shape index outside of collection limits.")
+                    End If
             End Select
             If updated Then
                 PanelShape.Invalidate()
