@@ -20,11 +20,8 @@ Public Class PointCollectionEditorDialog
 
         ' Add any initialization after the InitializeComponent() call.
         pointList = points
-    End Sub
-
-    Private Sub createPoints()
-        For Each value In pointList
-            ListBox1.Items.Add(value.X)
+        For i As Integer = 0 To pointList.Count - 1
+            ListBox1.Items.Add($"Point {i}")
         Next
     End Sub
 
@@ -46,4 +43,17 @@ Public Class PointCollectionEditorDialog
         End If
     End Sub
 
+    Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
+        pointList.Add(New Point)
+        ListBox1.Items.Add($"Point {pointList.Count - 1}")
+    End Sub
+
+    Private Sub ButtonRemove_Click(sender As Object, e As EventArgs) Handles ButtonRemove.Click
+        If ListBox1.SelectedIndex = -1 Then
+            MessageBox.Show("Select a point to remove")
+        Else
+            pointList.RemoveAt(ListBox1.SelectedIndex)
+            ListBox1.Items.RemoveAt(ListBox1.SelectedIndex)
+        End If
+    End Sub
 End Class

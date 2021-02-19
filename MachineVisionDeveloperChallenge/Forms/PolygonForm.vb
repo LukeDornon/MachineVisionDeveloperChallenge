@@ -49,8 +49,8 @@ Public Class PolygonForm
         Me.Close()
     End Sub
 
-    Private Sub ButtonTest_Click(sender As Object, e As EventArgs) Handles ButtonTest.Click
-        Using editor As New PointCollectionEditorDialog()
+    Private Sub ButtonTest_Click(sender As Object, e As EventArgs) Handles ButtonModifyPoints.Click
+        Using editor As New PointCollectionEditorDialog(returnPolygon.vertices)
             If editor.ShowDialog = DialogResult.OK Then
                 returnPolygon.vertices = editor.pointList
             End If

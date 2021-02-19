@@ -23,7 +23,7 @@ Partial Class PolygonForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.ButtonTest = New System.Windows.Forms.Button()
+        Me.ButtonModifyPoints = New System.Windows.Forms.Button()
         Me.ComboBoxColor = New System.Windows.Forms.ComboBox()
         Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.ButtonOK = New System.Windows.Forms.Button()
@@ -36,36 +36,36 @@ Partial Class PolygonForm
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonTest, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ComboBoxColor, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonCancel, 1, 4)
-        Me.TableLayoutPanel1.Controls.Add(Me.ButtonOK, 0, 4)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonModifyPoints, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.ComboBoxColor, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonCancel, 1, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonOK, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 5
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowCount = 3
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(284, 361)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'ButtonTest
+        'ButtonModifyPoints
         '
-        Me.ButtonTest.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ButtonTest.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonTest.Location = New System.Drawing.Point(1, 1)
-        Me.ButtonTest.Margin = New System.Windows.Forms.Padding(1)
-        Me.ButtonTest.Name = "ButtonTest"
-        Me.ButtonTest.Size = New System.Drawing.Size(140, 70)
-        Me.ButtonTest.TabIndex = 15
-        Me.ButtonTest.Text = "Apply"
-        Me.ButtonTest.UseVisualStyleBackColor = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.ButtonModifyPoints, 2)
+        Me.ButtonModifyPoints.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonModifyPoints.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonModifyPoints.Location = New System.Drawing.Point(1, 1)
+        Me.ButtonModifyPoints.Margin = New System.Windows.Forms.Padding(1)
+        Me.ButtonModifyPoints.Name = "ButtonModifyPoints"
+        Me.ButtonModifyPoints.Size = New System.Drawing.Size(282, 118)
+        Me.ButtonModifyPoints.TabIndex = 15
+        Me.ButtonModifyPoints.Text = "Modify Points"
+        Me.ButtonModifyPoints.UseVisualStyleBackColor = True
         '
         'ComboBoxColor
         '
@@ -73,7 +73,7 @@ Partial Class PolygonForm
         Me.ComboBoxColor.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ComboBoxColor.FormattingEnabled = True
         Me.ComboBoxColor.Items.AddRange(New Object() {"Blue", "Green", "Orange", "Purple", "Red", "Yellow"})
-        Me.ComboBoxColor.Location = New System.Drawing.Point(143, 217)
+        Me.ComboBoxColor.Location = New System.Drawing.Point(143, 121)
         Me.ComboBoxColor.Margin = New System.Windows.Forms.Padding(1)
         Me.ComboBoxColor.Name = "ComboBoxColor"
         Me.ComboBoxColor.Size = New System.Drawing.Size(140, 45)
@@ -83,10 +83,10 @@ Partial Class PolygonForm
         '
         Me.ButtonCancel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonCancel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonCancel.Location = New System.Drawing.Point(143, 289)
+        Me.ButtonCancel.Location = New System.Drawing.Point(143, 241)
         Me.ButtonCancel.Margin = New System.Windows.Forms.Padding(1)
         Me.ButtonCancel.Name = "ButtonCancel"
-        Me.ButtonCancel.Size = New System.Drawing.Size(140, 71)
+        Me.ButtonCancel.Size = New System.Drawing.Size(140, 119)
         Me.ButtonCancel.TabIndex = 13
         Me.ButtonCancel.Text = "Cancel"
         Me.ButtonCancel.UseVisualStyleBackColor = True
@@ -95,10 +95,10 @@ Partial Class PolygonForm
         '
         Me.ButtonOK.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ButtonOK.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonOK.Location = New System.Drawing.Point(1, 289)
+        Me.ButtonOK.Location = New System.Drawing.Point(1, 241)
         Me.ButtonOK.Margin = New System.Windows.Forms.Padding(1)
         Me.ButtonOK.Name = "ButtonOK"
-        Me.ButtonOK.Size = New System.Drawing.Size(140, 71)
+        Me.ButtonOK.Size = New System.Drawing.Size(140, 119)
         Me.ButtonOK.TabIndex = 12
         Me.ButtonOK.Text = "Apply"
         Me.ButtonOK.UseVisualStyleBackColor = True
@@ -108,10 +108,10 @@ Partial Class PolygonForm
         Me.Label4.AutoSize = True
         Me.Label4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(1, 217)
+        Me.Label4.Location = New System.Drawing.Point(1, 121)
         Me.Label4.Margin = New System.Windows.Forms.Padding(1)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(140, 70)
+        Me.Label4.Size = New System.Drawing.Size(140, 118)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Color"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -136,5 +136,5 @@ Partial Class PolygonForm
     Friend WithEvents ButtonCancel As Button
     Friend WithEvents ButtonOK As Button
     Friend WithEvents ComboBoxColor As ComboBox
-    Friend WithEvents ButtonTest As Button
+    Friend WithEvents ButtonModifyPoints As Button
 End Class
