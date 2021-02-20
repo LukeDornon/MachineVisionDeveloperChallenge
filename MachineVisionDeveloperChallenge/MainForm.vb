@@ -260,7 +260,13 @@
                         For i As Integer = 1 To row.Length - 1
                             If row(i).Contains("X") Then points.Add(New PointF(row(i + 1), row(i + 3)))
                         Next
-                        _shapeCollection.Polygons.Add(New Polygon(points, "Red"))
+                        Dim parsedPolygon = New Polygon(points, "Red")
+                        If Not parsedPolygon.ValidatePolygon Then
+                            If Not parsedPolygon.CorrectPolygon Then
+                                MessageBox.Show($"Parsed points do not define a valid polygon and the algorithm was unable to correct it")
+                            End If
+                        End If
+                            _shapeCollection.Polygons.Add(parsedPolygon)
                     Case "Square"
                         _shapeCollection.Squares.Add(New Square(New PointF(row(2), row(4)), row(6), row(8), "Red"))
                     Case "Equilateral Triangle"

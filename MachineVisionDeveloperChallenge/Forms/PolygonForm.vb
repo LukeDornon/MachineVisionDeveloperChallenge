@@ -53,7 +53,11 @@ Public Class PolygonForm
         Using editor As New PointCollectionEditorDialog(returnPolygon.vertices)
             If editor.ShowDialog = DialogResult.OK Then
                 returnPolygon.vertices = editor.pointList
-                'MessageBox.Show($"Valid Polygon? {returnPolygon.ValidPolygon}")
+                If Not returnPolygon.ValidatePolygon Then
+                    If Not returnPolygon.CorrectPolygon Then
+                        MessageBox.Show($"Entered points do not define a valid polygon and the algorithm was unable to correct it")
+                    End If
+                End If
             End If
         End Using
     End Sub
