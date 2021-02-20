@@ -2,7 +2,7 @@
 
 Public Class PointCollectionEditorDialog
 
-    Public Property pointList As List(Of Point)
+    Public Property pointList As List(Of PointF)
 
     Public Sub New()
 
@@ -10,10 +10,10 @@ Public Class PointCollectionEditorDialog
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        pointList = New List(Of Point)
+        pointList = New List(Of PointF)
     End Sub
 
-    Public Sub New(ByVal points As List(Of Point))
+    Public Sub New(ByVal points As List(Of PointF))
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -44,7 +44,7 @@ Public Class PointCollectionEditorDialog
     End Sub
 
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
-        pointList.Add(New Point)
+        pointList.Add(New PointF)
         ListBox1.Items.Add($"Point {pointList.Count - 1}")
     End Sub
 

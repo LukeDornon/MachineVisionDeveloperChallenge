@@ -49,10 +49,11 @@ Public Class PolygonForm
         Me.Close()
     End Sub
 
-    Private Sub ButtonTest_Click(sender As Object, e As EventArgs) Handles ButtonModifyPoints.Click
+    Private Sub ButtonModifyPoints_Click(sender As Object, e As EventArgs) Handles ButtonModifyPoints.Click
         Using editor As New PointCollectionEditorDialog(returnPolygon.vertices)
             If editor.ShowDialog = DialogResult.OK Then
                 returnPolygon.vertices = editor.pointList
+                'MessageBox.Show($"Valid Polygon? {returnPolygon.ValidPolygon}")
             End If
         End Using
     End Sub

@@ -252,19 +252,19 @@
                 Dim row As String() = parser.ReadFields()
                 Select Case row(0)
                     Case "Circle"
-                        _shapeCollection.Circles.Add(New Circle(New Point(row(2), row(4)), row(6), "Red"))
+                        _shapeCollection.Circles.Add(New Circle(New PointF(row(2), row(4)), row(6), "Red"))
                     Case "Ellipse"
-                        _shapeCollection.Ellipses.Add(New Ellipse(New Point(row(2), row(4)), row(6), row(8), row(10), "Red"))
+                        _shapeCollection.Ellipses.Add(New Ellipse(New PointF(row(2), row(4)), row(6), row(8), row(10), "Red"))
                     Case "Polygon"
-                        Dim points As New List(Of Point)
+                        Dim points As New List(Of PointF)
                         For i As Integer = 1 To row.Length - 1
-                            If row(i).Contains("X") Then points.Add(New Point(row(i + 1), row(i + 3)))
+                            If row(i).Contains("X") Then points.Add(New PointF(row(i + 1), row(i + 3)))
                         Next
                         _shapeCollection.Polygons.Add(New Polygon(points, "Red"))
                     Case "Square"
-                        _shapeCollection.Squares.Add(New Square(New Point(row(2), row(4)), row(6), row(8), "Red"))
+                        _shapeCollection.Squares.Add(New Square(New PointF(row(2), row(4)), row(6), row(8), "Red"))
                     Case "Equilateral Triangle"
-                        _shapeCollection.Triangles.Add(New Triangle(New Point(row(2), row(4)), row(6), row(8), "Red"))
+                        _shapeCollection.Triangles.Add(New Triangle(New PointF(row(2), row(4)), row(6), row(8), "Red"))
                     Case Else
                         MessageBox.Show($"You missed {row(0)}")
                 End Select
@@ -305,7 +305,7 @@
             PanelShape.BackColor = DefaultBackColor
 
             'Determine Optimal Origin
-            Dim origin As Point
+            Dim origin As PointF
             Dim originOffset = _shapeCollection.Circles(index).radius + 2
             If _shapeCollection.Circles(index).center.X > 0 Then
                 origin.X = originOffset
@@ -321,8 +321,8 @@
             'Draw Origin
             Dim myPen As New Pen(Color.Black)
             Dim formGraphics As Graphics = PanelShape.CreateGraphics
-            formGraphics.DrawLine(myPen, New Point(origin.X - 4, origin.Y), New Point(origin.X + 10, origin.Y))
-            formGraphics.DrawLine(myPen, New Point(origin.X, origin.Y - 10), New Point(origin.X, origin.Y + 4))
+            formGraphics.DrawLine(myPen, New PointF(origin.X - 4, origin.Y), New PointF(origin.X + 10, origin.Y))
+            formGraphics.DrawLine(myPen, New PointF(origin.X, origin.Y - 10), New PointF(origin.X, origin.Y + 4))
 
             'Draw and Fill Circle
             Dim myBrush As New SolidBrush(Color.FromName(_shapeCollection.Circles(index).color))
@@ -347,7 +347,7 @@
             PanelShape.BackColor = DefaultBackColor
 
             'Determine Optimal Origin
-            Dim origin As Point
+            Dim origin As PointF
             Dim originOffset = If(_shapeCollection.Ellipses(index).majorRadius > _shapeCollection.Ellipses(index).minorRadius, _shapeCollection.Ellipses(index).majorRadius, _shapeCollection.Ellipses(index).minorRadius) + 2
             If _shapeCollection.Ellipses(index).center.X > 0 Then
                 origin.X = originOffset
@@ -363,8 +363,8 @@
             'Draw Origin
             Dim myPen As New Pen(Color.Black)
             Dim formGraphics As Graphics = PanelShape.CreateGraphics
-            formGraphics.DrawLine(myPen, New Point(origin.X - 4, origin.Y), New Point(origin.X + 10, origin.Y))
-            formGraphics.DrawLine(myPen, New Point(origin.X, origin.Y - 10), New Point(origin.X, origin.Y + 4))
+            formGraphics.DrawLine(myPen, New PointF(origin.X - 4, origin.Y), New PointF(origin.X + 10, origin.Y))
+            formGraphics.DrawLine(myPen, New PointF(origin.X, origin.Y - 10), New PointF(origin.X, origin.Y + 4))
 
             'Translate Graphics, then rotate applied to all later graphics calls
             formGraphics.TranslateTransform(origin.X + _shapeCollection.Ellipses(index).center.X, origin.Y - _shapeCollection.Ellipses(index).center.Y)
@@ -393,7 +393,7 @@
             PanelShape.BackColor = DefaultBackColor
 
             'Determine Optimal Origin
-            Dim origin As Point
+            Dim origin As PointF
             If _shapeCollection.Polygons(index).vertices(0).X > 0 Then
                 origin.X = 10
             Else
@@ -408,13 +408,13 @@
             'Draw Origin
             Dim myPen As New Pen(Color.Black)
             Dim formGraphics As Graphics = PanelShape.CreateGraphics
-            formGraphics.DrawLine(myPen, New Point(origin.X - 4, origin.Y), New Point(origin.X + 10, origin.Y))
-            formGraphics.DrawLine(myPen, New Point(origin.X, origin.Y - 10), New Point(origin.X, origin.Y + 4))
+            formGraphics.DrawLine(myPen, New PointF(origin.X - 4, origin.Y), New PointF(origin.X + 10, origin.Y))
+            formGraphics.DrawLine(myPen, New PointF(origin.X, origin.Y - 10), New PointF(origin.X, origin.Y + 4))
 
             'Reorient points to origin
-            Dim pointsTemp As New List(Of Point)
+            Dim pointsTemp As New List(Of PointF)
             For Each pointVal In _shapeCollection.Polygons(index).vertices
-                pointsTemp.Add(New Point(origin.X + pointVal.X, origin.Y - pointVal.Y))
+                pointsTemp.Add(New PointF(origin.X + pointVal.X, origin.Y - pointVal.Y))
             Next
 
             'Draw and Fill Poygon
@@ -439,7 +439,7 @@
             PanelShape.BackColor = DefaultBackColor
 
             'Determine Optimal Origin
-            Dim origin As Point
+            Dim origin As PointF
             Dim originOffset = (_shapeCollection.Squares(index).length / 2) + 2
             If _shapeCollection.Squares(index).center.X > 0 Then
                 origin.X = originOffset
@@ -455,8 +455,8 @@
             'Draw Origin
             Dim myPen As New Pen(Color.Black)
             Dim formGraphics As Graphics = PanelShape.CreateGraphics
-            formGraphics.DrawLine(myPen, New Point(origin.X - 4, origin.Y), New Point(origin.X + 10, origin.Y))
-            formGraphics.DrawLine(myPen, New Point(origin.X, origin.Y - 10), New Point(origin.X, origin.Y + 4))
+            formGraphics.DrawLine(myPen, New PointF(origin.X - 4, origin.Y), New PointF(origin.X + 10, origin.Y))
+            formGraphics.DrawLine(myPen, New PointF(origin.X, origin.Y - 10), New PointF(origin.X, origin.Y + 4))
 
             'Translate Graphics, then rotate applied to all later graphics calls
             formGraphics.TranslateTransform(origin.X + _shapeCollection.Squares(index).center.X, origin.Y - _shapeCollection.Squares(index).center.Y)
@@ -485,7 +485,7 @@
             PanelShape.BackColor = DefaultBackColor
 
             'Determine Optimal Origin
-            Dim origin As Point
+            Dim origin As PointF
             Dim originOffset = _shapeCollection.Triangles(index).length + 2
             If _shapeCollection.Triangles(index).center.X > 0 Then
                 origin.X = originOffset
@@ -501,18 +501,18 @@
             'Draw Origin
             Dim myPen As New Pen(Color.Black)
             Dim formGraphics As Graphics = PanelShape.CreateGraphics
-            formGraphics.DrawLine(myPen, New Point(origin.X - 4, origin.Y), New Point(origin.X + 10, origin.Y))
-            formGraphics.DrawLine(myPen, New Point(origin.X, origin.Y - 10), New Point(origin.X, origin.Y + 4))
+            formGraphics.DrawLine(myPen, New PointF(origin.X - 4, origin.Y), New PointF(origin.X + 10, origin.Y))
+            formGraphics.DrawLine(myPen, New PointF(origin.X, origin.Y - 10), New PointF(origin.X, origin.Y + 4))
 
             'Translate Graphics, then rotate applied to all later graphics calls
             formGraphics.TranslateTransform(origin.X + _shapeCollection.Triangles(index).center.X, origin.Y - _shapeCollection.Triangles(index).center.Y)
             formGraphics.RotateTransform(-1 * (_shapeCollection.Triangles(index).orientation * (180 / Math.PI)))
 
             'Calculate Vertices
-            Dim pointsTemp As New List(Of Point)
-            pointsTemp.Add(New Point(-(_shapeCollection.Triangles(index).length / 2), (_shapeCollection.Triangles(index).length / (2 * Math.Sqrt(3)))))
-            pointsTemp.Add(New Point((_shapeCollection.Triangles(index).length / 2), (_shapeCollection.Triangles(index).length / (2 * Math.Sqrt(3)))))
-            pointsTemp.Add(New Point(0, -1 * (_shapeCollection.Triangles(index).length / (Math.Sqrt(3)))))
+            Dim pointsTemp As New List(Of PointF)
+            pointsTemp.Add(New PointF(-(_shapeCollection.Triangles(index).length / 2), (_shapeCollection.Triangles(index).length / (2 * Math.Sqrt(3)))))
+            pointsTemp.Add(New PointF((_shapeCollection.Triangles(index).length / 2), (_shapeCollection.Triangles(index).length / (2 * Math.Sqrt(3)))))
+            pointsTemp.Add(New PointF(0, -1 * (_shapeCollection.Triangles(index).length / (Math.Sqrt(3)))))
 
             'Draw and Fill Triangle
             Dim myBrush As New SolidBrush(Color.FromName(_shapeCollection.Triangles(index).color))
@@ -592,7 +592,7 @@
             Throw (ex)
         End Try
     End Function
-    Public Function CalculatePolygonDimensions(ByVal points As List(Of Point)) As Double()
+    Public Function CalculatePolygonDimensions(ByVal points As List(Of PointF)) As Double()
         Try
             Dim returnValues As Double() = {0.0, 0.0}
             Dim areaSum, perimeterSum As Double

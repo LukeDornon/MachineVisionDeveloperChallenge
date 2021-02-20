@@ -42,7 +42,7 @@
     Private Sub ButtonOK_Click(sender As Object, e As EventArgs) Handles ButtonOK.Click
         Dim parseDbl, parsedbl2 As Double
         If Double.TryParse(TextBoxCenterX.Text, parseDbl) AndAlso Double.TryParse(TextBoxCenterY.Text, parsedbl2) Then
-            returnEllipse.center = New Point(parseDbl, parsedbl2)
+            returnEllipse.center = New PointF(parseDbl, parsedbl2)
         Else
             MessageBox.Show("Please enter a valid center X and Y value.")
             Exit Sub
