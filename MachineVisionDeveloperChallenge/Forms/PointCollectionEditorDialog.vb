@@ -56,4 +56,8 @@ Public Class PointCollectionEditorDialog
             ListBox1.Items.RemoveAt(ListBox1.SelectedIndex)
         End If
     End Sub
+
+    Private Sub PropertyGrid1_PropertyValueChanged(s As Object, e As PropertyValueChangedEventArgs) Handles PropertyGrid1.PropertyValueChanged
+        If PropertyGrid1.SelectedObject IsNot Nothing Then pointList(ListBox1.SelectedIndex) = PropertyGrid1.SelectedObject
+    End Sub
 End Class
